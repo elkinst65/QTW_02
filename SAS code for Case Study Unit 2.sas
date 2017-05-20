@@ -23,6 +23,7 @@ run;
 /* applying the initial proc reg which automatically applies listwise deletion*/
 proc reg data = carmpg;
 	model mpg = size cylinders hp weight accel eng_type; 
+	title 'Regression Analysis with Listwise Deletion';
 run;
 
 
@@ -42,6 +43,7 @@ proc reg data = miout outest = outreg
 			covout;
 	model mpg = eng_type size cylinders hp weight accel;
 	by _Imputation_; 
+	title 'Regression Analysis of PROC MI results';
 run;
 
 /* Analyzing the effects*/
@@ -52,6 +54,7 @@ run;
 /*
 ERROR: Within-imputation COV missing for _Imputation_= 1 in the input DATA= data set.
 
-This error is thrown when the above code is run. This is because size is included when it is what we are trying to model. 
+This error is thrown when the above code is run. This is because size is included when 
+it is what we are trying to model. 
 */
 
