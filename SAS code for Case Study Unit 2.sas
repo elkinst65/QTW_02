@@ -12,7 +12,7 @@ proc import datafile = 'C:\Users\austi\Documents\GitHub\QTW_02\carmpg.txt'
 	delimiter = '09'x;
 run;
 
-proc print data = carmpg; run;
+proc print data = carmpg (obs = 10); run;
 
 /* Descriptive statistics */
 proc means data = carmpg;
@@ -22,14 +22,13 @@ run;
 
 /* applying the initial proc reg which automatically applies listwise deletion*/
 proc reg data = carmpg;
-	model size = mpg cylinders hp weight accel eng_type; 
+	model mpg = size cylinders hp weight accel eng_type; 
 run;
 
-/* Here, size was chosen to be modeled arbitrarily. Nothing indicating any particular variable should be chosen.*/
 
 ods select misspattern;
 proc mi data = carmpg nimpute=0;
-	var  mpg cylinders size hp weight accel eng_type;
+	var mpg cylinders size hp weight accel eng_type;
 run;
 
 
@@ -41,13 +40,13 @@ run;
 /* Performing regression on the result of PROC MI*/
 proc reg data = miout outest = outreg 
 			covout;
-	model size = eng_type mpg cylinders hp weight accel;
+	model mpg = eng_type size cylinders hp weight accel;
 	by _Imputation_; 
 run;
 
 /* Analyzing the effects*/
 proc mianalyze data=outreg;
-modeleffects mpg cylinders hp weight accel eng_type Intercept;
+modeleffects size cylinders hp weight accel eng_type Intercept;
 run;
 
 /*
