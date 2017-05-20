@@ -1,0 +1,39 @@
+Auto	ENG_TYPE	CYLINDERS	SIZE	HP	WEIGHT	ACCEL	MPG
+Buick Estate Wagon	1	8	350	155	4.36	14.9	16.9
+Ford Country Sq. Wagon	1	8	351		4.054	14.3	15.5
+Chevy Malibu Wagon	1	8	267	125	3.605	15	19.2
+Chrys Lebaron Wagon	1	8	360	150	3.94	13	18.5
+Chevette	0	4	98	68	2.155	16.5	30
+Toyota Corona	0	4	134	95	2.56	14.2	27.5
+Datsun 510	0	4	119	97	2.3	14.7	27.2
+Dodge Omni		4	105	75	2.23	14.5	30.9
+Audi 5000	0	5	131		2.83	15.9	20.3
+Volvo 240 GL	0	6	163	125	3.14	13.6	17
+Saab 99 GLE	0		121	115	2.795	15.7	21.6
+Peugeot 694 SL	0	6		133	3.41	15.8	16.2
+Buick Century Spec.	0		231	105	3.38	15.8	20.6
+Mercury Zephyr	0	6	200	85		16.7	20.8
+Dodge Aspen	0	6	225	110	3.62	18.7	18.6
+AMC Concord D/L	0		258	120	3.41		18.1
+Chevy Caprice Classic	1		305	130		15.4	17
+Ford LTD		8	302	129	3.725		17.6
+Mercury Grand Marquis	1	8	351	138	3.955	13.2	16.5
+Dodge St Regis	1	8	318	135	3.83		18.2
+Ford Mustang 4	0	4	140		2.585	14.4	26.5
+Ford Mustang Ghia	1	6	171		2.91	16.6	21.9
+Mazda GLC	0	4	86	65		15.2	34.1
+Dodge Colt	0	4	98	80	1.915	14.4	35.1
+AMC Spirit	0	4	121		2.67	15	27.4
+VW Scirocco	0	4	89	71	1.99	14.9	31.5
+Honda Accord	0	4	98	68		16.6	29.5
+Buick Skylark	0	4	151	90	2.67	16	28.4
+Chevy Citation	1	6	173	115	2.595	11.3	28.8
+Olds Omega	1	6	173	115	2.7	12.9	26.8
+Pontiac Phoenix	0	4	151	90	2.556	13.2	33.5
+Plymouth Horizon	0	4	105	70	2.2	13.2	34.2
+Datsun 210		4	85	65	2.02	19.2	31.8
+Fiat Strada	0	4	91	69	2.13	14.7	37.3
+VW Dasher	0	4		78		14.1	30.5
+Datsun 810	0	6		97	2.815	14.5	22
+BMW 320i	0	4	121	110			21.5
+VW Rabbit	0	4	89	71	1.925	14	31.9
