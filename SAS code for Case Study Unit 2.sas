@@ -20,7 +20,7 @@ var mpg cylinders size hp weight accel eng_type;
 run;
 
 
-/* applying the initial proc reg*/
+/* applying the initial proc reg which automatically applies listwise deletion*/
 proc reg data = carmpg;
 	model size = mpg cylinders hp weight accel eng_type; 
 run;
@@ -32,17 +32,20 @@ proc mi data = carmpg nimpute=0;
 	var  mpg cylinders size hp weight accel eng_type;
 run;
 
+
 proc MI data = carmpg
 out = miout seed = 35399;
 var mpg cylinders size hp weight accel eng_type;
 run;
 
+/* Performing regression on the result of PROC MI*/
 proc reg data = miout outest = outreg 
 			covout;
 	model size = eng_type mpg cylinders hp weight accel;
 	by _Imputation_; 
 run;
 
+/* Analyzing the effects*/
 proc mianalyze data=outreg;
 modeleffects mpg cylinders hp weight accel eng_type Intercept;
 run;
