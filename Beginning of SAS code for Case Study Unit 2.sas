@@ -15,12 +15,12 @@ run;
 proc print data = carmpg; run;
 
 
-/* applying proc reg, as seen in the videos*/
+/* applying the initial proc reg*/
 proc reg data = carmpg;
-	model mpg = cylinders size hp weight accel eng_type;
+	model size = mpg cylinders size hp weight accel eng_type; 
 run;
 
-
+/* Here, size was chosen to be modeled arbitrarily. Nothing indicating any particular variable should be chosen.*/
 
 ods select misspattern;
 proc mi data = carmpg nimpute=0;
@@ -37,4 +37,14 @@ proc reg data = miout outest = outreg
 	model size = eng_type mpg cylinders hp weight accel;
 	by _Imputation_; 
 run;
+
+proc mianalyze data=outreg;
+modeleffects mpg cylinders hp weight accel eng_type Intercept;
+run;
+
+/*
+ERROR: Within-imputation COV missing for _Imputation_= 1 in the input DATA= data set.
+
+This error is thrown when the above code is run. This is because size is included when it is what we are trying to model. 
+*/
 
