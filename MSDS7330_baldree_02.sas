@@ -19,10 +19,12 @@ data cars;
 run;
 
 * print out entries;
+title 'MPG Dataset';
 proc print data=cars;
 run;
 
 * contents of dataset;
+title 'MPG Dataset Contents';
 proc datasets;
    contents data=_all_;
 run;
@@ -37,25 +39,29 @@ quit;
 
 * is the missing data monotone or non-monotone?;
 * the data is non-monotone;
+title 'MI Pattern';
 ods select misspattern;
 proc mi data=cars nimpute=0;
 	var mpg cylinders size hp weight;
 run;
 
 * create mi data using default MCMC for non-monotone;
+title 'MI with MCMC';
 proc mi data=cars out=miout seed=35399 nimpute=5;
 	var mpg cylinders size hp weight;
 run;
 
 * run reg with mi data;
+title 'Predicting MPG with MI (final)';
 proc reg data=miout outest=outreg covout;
 	model mpg = cylinders size hp weight;
 	by _Imputation_;
 run;
 
 * combine results;
+title 'Predicting MPG (combined)';
 proc mianalyze data=outreg;
-	modeleffects cylinders size hp weight Intercept;
+	modeleffects Intercept cylinders size hp weight;
 run;
 
 
