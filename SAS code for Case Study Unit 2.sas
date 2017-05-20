@@ -14,10 +14,15 @@ run;
 
 proc print data = carmpg; run;
 
+/* Descriptive statistics */
+proc means data = carmpg;
+var mpg cylinders size hp weight accel eng_type;
+run;
+
 
 /* applying the initial proc reg*/
 proc reg data = carmpg;
-	model size = mpg cylinders size hp weight accel eng_type; 
+	model size = mpg cylinders hp weight accel eng_type; 
 run;
 
 /* Here, size was chosen to be modeled arbitrarily. Nothing indicating any particular variable should be chosen.*/
