@@ -32,7 +32,7 @@ run;
 * use PROC REG with listwise deletion;
 title 'Predicting MPG (initial)';
 proc reg data=cars;
-	model mpg = cylinders size hp weight;
+	model mpg = cylinders size hp weight accel engtype;
 run;
 quit;
 
@@ -41,24 +41,24 @@ quit;
 title 'MI Pattern';
 ods select misspattern;
 proc mi data=cars nimpute=0;
-	var mpg cylinders size hp weight;
+	var mpg cylinders size hp weight accel engtype;
 run;
 
 * create mi data using default MCMC for non-monotone;
 title 'MI with MCMC';
 proc mi data=cars out=miout seed=35399 nimpute=5;
-	var mpg cylinders size hp weight;
+	var mpg cylinders size hp weight accel engtype;
 run;
 
 * run reg with mi data;
 title 'Predicting MPG with MI (final)';
 proc reg data=miout outest=outreg covout;
-	model mpg = cylinders size hp weight;
+	model mpg = cylinders size hp weight accel engtype;
 	by _Imputation_;
 run;
 
 * combine results;
 title 'Predicting MPG (combined)';
 proc mianalyze data=outreg;
-	modeleffects Intercept cylinders size hp weight;
+	modeleffects Intercept cylinders size hp weight accel engtype;
 run;
