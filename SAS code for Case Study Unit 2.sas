@@ -22,7 +22,7 @@ run;
 
 /* applying the initial proc reg which automatically applies listwise deletion*/
 proc reg data = carmpg;
-	model mpg = size cylinders hp weight accel eng_type; 
+	model mpg = cylinders size hp weight accel eng_type; 
 	title 'Regression Analysis with Listwise Deletion';
 run;
 
@@ -41,14 +41,14 @@ run;
 /* Performing regression on the result of PROC MI*/
 proc reg data = miout outest = outreg 
 			covout;
-	model mpg = eng_type size cylinders hp weight accel;
+	model mpg = cylinders size hp weight accel eng_type;
 	by _Imputation_; 
 	title 'Regression Analysis of PROC MI results';
 run;
 
 /* Analyzing the effects*/
 proc mianalyze data=outreg;
-modeleffects size cylinders hp weight accel eng_type Intercept;
+modeleffects cylinders size hp weight accel eng_type Intercept;
 run;
 
 /*
