@@ -27,21 +27,6 @@ proc reg data = carmpg;
 run;
 
 
-/* Run this code separately to exclude MPGs from PROC MI*/
-/*------------------------------------------------------*/
-ods select misspattern;
-proc mi data = carmpg nimpute=0;
-	var mpg cylinders size hp weight accel eng_type;
-run;
-
-
-proc MI data = carmpg
-out = miout seed = 35399;
-var mpg cylinders size hp weight accel eng_type;
-run;
-/*------------------------------------------------------*/
-
-
 ods select misspattern;
 proc mi data = carmpg nimpute=0;
 	var mpg cylinders size hp weight accel eng_type;
