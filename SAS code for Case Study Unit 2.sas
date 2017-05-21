@@ -4,7 +4,7 @@ Baldree, Brock, Elkins, Kelly
 */
 
 /*switching mpg and eng_type to clear the null missing data issue*/
-proc import datafile = 'C:\Users\austi\Documents\GitHub\QTW_02\carmpg.txt'
+proc import datafile = 'C:\Users\austi\Documents\GitHub\Quantifying the World\QTW_02\carmpg.txt'
 	out = carmpg
 	dbms = dlm
 	replace;
@@ -25,6 +25,21 @@ proc reg data = carmpg;
 	model mpg = cylinders size hp weight accel eng_type; 
 	title 'Regression Analysis with Listwise Deletion';
 run;
+
+
+/* Run this code separately to exclude MPGs from PROC MI*/
+/*------------------------------------------------------*/
+ods select misspattern;
+proc mi data = carmpg nimpute=0;
+	var mpg cylinders size hp weight accel eng_type;
+run;
+
+
+proc MI data = carmpg
+out = miout seed = 35399;
+var mpg cylinders size hp weight accel eng_type;
+run;
+/*------------------------------------------------------*/
 
 
 ods select misspattern;
