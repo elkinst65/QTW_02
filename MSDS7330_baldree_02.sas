@@ -1,6 +1,5 @@
 /*
 MSDS7333-401: Quantifying the World 
-Matt Baldree
 
 Case Study 2
 - Use PROC MI to discover the missing values patterns and to decide what 
@@ -63,8 +62,3 @@ title 'Predicting MPG (combined)';
 proc mianalyze data=outreg;
 	modeleffects Intercept cylinders size hp weight;
 run;
-
-
-
-
-
